@@ -1,0 +1,319 @@
+/*Responsive Header*/
+nav{
+    padding: 2px;
+    background: linear-gradient(to bottom, black, gray);
+}
+.trademark{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.trademark .logo{
+    color: white;
+    font-size: 13px;
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 9px;
+}
+
+
+/*History Section*/
+.chat-history{
+    background-color: #292828;
+    width: 25.5%;
+    height: 587px;
+    border: 1px solid white;
+    margin-left: -9px;
+    margin-top: -7px;
+}
+.history-button{
+    font-size: 14px;
+    color: white;
+    margin-left: 7px;
+    margin-top: 23px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid white;
+    border-radius: 20px;
+    background-color: #292828;
+    transition: all 0.4s ease;
+}
+.history-button:hover{
+    background-color: #111;
+    border: 1px solid black;
+}
+.chat-btn{
+    font-size: 14px;
+    color: white;
+    margin-left: 7px;
+    margin-top: 23px;
+    width: 90%;
+    height: 50px;
+    border: 1px solid white;
+    border-radius: 20px;
+    background-color: #292828;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+.chat-btn:hover{
+    background-color: #111;
+    border: 1px solid black;
+}
+.recent{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    color: white;
+}
+.chat-current{
+    margin-top: 10px;
+    margin-left: 15px;
+    color: white;
+}
+.message-current{
+    margin-top: 5px;
+    font-size: 15px;
+    margin-left: 5px;
+}
+.history{
+    margin-left: 15px;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+}
+.history-container{
+    overflow: scroll;
+    width: 100%;
+    height: 70%;
+}
+.history-container a{
+    text-decoration: none;
+    color: white;
+}
+.history-container::-webkit-scrollbar{
+    background-color: #292828;
+}
+.history-container::-webkit-scrollbar-thumb{
+    background-color: transparent;
+    width: 40px;
+    border-radius: 20px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+.history-container::-webkit-scrollbar-thumb:hover{
+    background-color: gray;
+}
+.history-container::-webkit-scrollbar-corner{
+    background-color: transparent;
+}
+
+/*Chat Section*/
+.chat-body{
+    top: 0;
+    bottom: 0;
+    position: fixed;
+    background-color: #111;
+    width: 76%;
+    height: 650px;
+    margin-top: -7px;
+    margin-left: 330px;
+}
+.chat-section{
+    height: 480px; 
+    position: relative;
+    overflow-y: scroll;
+}
+.chat-section::-webkit-scrollbar,  .chat-section::-webkit-scrollbar-corner{
+    background-color: transparent;
+}
+.chat-section::-webkit-scrollbar-thumb{
+    background-color: transparent;
+    width: 90px;
+    padding: 3px;
+    border-radius: 20px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+.chat-section::-webkit-scrollbar-thumb:hover{
+    background-color: gray;
+}
+.chat-input{
+    margin-top: 20px;
+    border-radius: 20px;
+    border: 1px solid lightgray;
+    box-shadow: 0px 0px 2px 0px solid lightgray;
+    width: 60%;
+    height: 90px;
+    padding: 10px;
+    margin-left: 200px;
+}
+.text-message{
+    border: 1px solid lightgray;
+    padding: 9px;
+    border-radius: 20px;
+    width: 90%;
+    color: white;
+    height: 30px;
+    margin-bottom: 10px;
+    background-color: #292828;
+}
+.text-message::placeholder{
+    margin-left: 70px;
+    color: white;
+}
+.other-btn{
+    width: 30px;
+    background-color: #292828;
+    color: white;
+    height: 30px;
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+.other-btn:hover{
+    background-color: #111;
+}
+.send-btn{
+    width: 30px;
+    background-color: #292828;
+    color: white;
+    height: 30px;
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+.send-btn:hover{
+    background-color: #111;
+}
+.send-btn:disabled {
+    background-color: #a5d6a7;
+    cursor: not-allowed;
+}
+.model{
+    float: right;
+    width: 70px;
+    background-color: #292828;
+    color: white;
+    height: 30px;
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+.model:hover{
+    background-color: #111;
+}
+.user-message, .bot-message{
+    border: 1px solid gray;
+    margin-left: 30px;
+    width: 700px;
+    margin-bottom: 30px;
+    padding: 2px;
+    background-color: #292828;
+    color: white;
+    height: auto;
+}
+.user-message{
+    background-color: #4caf50;
+    color: white;
+    align-self: flex-end;
+    margin-right: 30px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.bot-message{
+    align-self: flex-start;
+    background-color: #292828;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+#chatbox {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.message {
+    max-width: 60%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+/* ... existing CSS ... */
+#mic-btn { 
+    transition: all 0.3s;
+}
+/* Pulsating effect when recording */
+#mic-btn.active {
+    background-color: #ff5e6d;
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+}
+
+/*Media Query*/
+@media (max-width:900px) {
+    .chat-body{
+        width: 76%;
+        position: absolute;
+        right: -1%;
+    }
+    nav{
+        width: 25%;
+        font-size: 4px;
+    }
+    .chat-history{
+        height: 590px;
+        width: 29%;
+    }
+    .recent, .message-current, .history{
+        font-size: 11px;
+    }
+    .chat-btn{
+        font-size: 10px;
+        margin-left: 0px;
+        margin-top: 23px;
+        width: 90%;
+        height: 20px;
+    }
+    .trademark .logo{
+        font-size: 9px;
+        margin-left: 2px;
+        text-align: center;
+    }
+    .user-message, .bot-message{
+        width: 500px;
+        font-size: 10px;
+    }
+    .bot-message{
+        margin-left: 5px;
+    }
+    .user-message{
+        margin-right: 5px;
+    }
+    .chat-input{
+        margin-left: 20px;
+        width: 80%;
+    }
+    .text-message{
+        width: 92%;
+    }
+}
+@media (max-width: 1000px) {
+    .chat-body{
+        height: 1000px;
+    }
+    .chat-history{
+        height: 1000px;
+    }
+}

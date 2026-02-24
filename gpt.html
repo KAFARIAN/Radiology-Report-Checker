@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="gpt.css">
+        <link rel="icon" href="Profile.png">
+        <title>EXPERT-LEVEL RADIOLOGY</title>
+    </head>
+
+    <body>
+        <!--History Section--> 
+        <nav>
+            <div class="trademark">
+                <div class="logo">EXPERT-LEVEL RADIOLOGY REPORT GENERATOR</div>
+            </div>
+        </nav>
+
+        <div class="chat-history" id="chat-history">
+            <div style="margin-left: 15px;"><button type="submit" class="chat-btn" id="new-chat"><i class="fa-regular fa-message"></i> New Chat</button></div>
+            <div class="chat-current" id="chat-current">
+                <div class="message-current" id="message-current"></div>
+            </div>
+            
+            <p class="recent">Recent</p>
+            <div class="history-container" id="history-sidebar">
+                <div id="history-list">
+                    <p class="history">No History Yet...</p>
+                </div>
+            </div>
+        </div>
+
+        <!--Chat Section-->
+        <div class="chat-body" id="chat-body">
+            <div class="chat-section" >
+                <div style="margin-top: 30px;">
+                    <div id="chatbox">
+                        <div class="message bot-message">Hello! How can I assist you today?</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input">
+                <div>
+                    <input type="text" id="text-message" class="text-message" placeholder="Search..." required>
+                    <button type="button" id="send-btn" class="send-btn" onclick="sendMessage()" style="font-size: 10px; float: right; margin-top:2px;"><i class="fas fa-paper-plane"></i></button>
+                </div>
+
+                <div>
+                    <button type="submit" class="other-btn" id="mic-btn"><i class="fas fa-microphone" style="font-size: 11px;"></i></button>
+                    <button type="submit" class="other-btn" id="image-upload-btn"><i class="fas fa-paperclip" style="font-size: 11px;"></i></button>
+                    <button type="submit" class="other-btn" id="extract-btn" onclick="extractDataAgent()"><i class="fa-regular fa-clipboard" style="font-size: 11px;"></i></button><!--extractData()-->
+                    <button type="submit" class="other-btn" id="report-btn" onclick="generateReportAgent()"><i class="fa-regular fa-hospital" style="font-size: 11px;"></i></button><!--generateReport()-->
+                    <input type="file" id="image-input" accept="image/png, image/jpeg" style="display: none; margin-left: 150px;">
+                </div>
+            </div>
+        </div>
+
+        <script src="gpt_rag.js" defer></script><!--gpt_rag.js-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/js/all.min.js" integrity="sha512-gBYquPLlR76UWqCwD06/xwal4so02RjIR0oyG1TIhSGwmBTRrIkQbaPehPF8iwuY9jFikDHMGEelt0DtY7jtvQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </body>
+</html>
