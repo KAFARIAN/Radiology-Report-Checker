@@ -160,11 +160,26 @@ def create_rag_chain_object(vectorstore):
         "1. Accuracy: The user's question MUST be answered accurately and professionally.\n"
         "2. Tools: If the user asks to analyze an image (or uploads one), you MUST use the 'analyze_radiology_image' tool. "
         "If they ask for a visualization, use 'generate_image'.\n"
-        "3. Context Awareness: You have access to the conversation history. **Always check the previous messages.** "
+        "3. Context Awareness: You have access to the conversation history. Always check the previous messages."
         "If the user replies with short confirmations like 'Yes', 'Do it', 'Proceed', or 'Okay', "
         "you must infer their intent from the last thing you proposed (e.g., if you asked 'Shall I generate a report?', and they say 'Yes', then generate the report).\n"
         "4. Honesty: If you don't know the answer or the context is insufficient, say so clearly.\n"
+        "As you ask the user for findings or medical history of a disease for the report, if the user provides the finding use, then add the findings to the reoprt.\n"
         "\n\n"
+        
+        "CRITICAL TOOL RULES (MANDATORY):\n"
+        "1. RADIOLOGY REPORT requests = radiology_rag_tool ONLY. NEVER generate_image."
+        "2. Image/analysis/visualization = generate_image or analyze_radiology_image."
+        "3. Medical questions = radiology_rag_tool."
+
+        "EXAMPLES:\n"
+        "- 'Generate report' → radiology_rag_tool('chest xray pneumonia')"
+        "- 'Show MRI image' → generate_image('brain MRI tumor')"
+        "- 'Generate report for John Doe, Male, 45 years old with chest pain → generate_radiology_report('John Doe, Male, 45yo', 'chest pain')"
+        "- 'Analyze this scan' → analyze_radiology_image(path, 'fracture?')"
+
+        "NO IMAGES FOR REPORTS. Generate TEXT reports only."
+        
         "Context from documents:\n{context}"
     )
     
@@ -189,9 +204,35 @@ def radiology_rag_tool(question: str) -> str:
     except Exception as e:
         return f"RAG error: {str(e)}"
 
+@tool
+def generate_radiology_report(patient_info: str, findings: str) -> str:
+    """
+    Generate COMPLETE radiology report.
+    patient_info format: "John Doe, Male, 45 years old"
+    Returns structured DICOM-standard report.
+    """
+    global RAG_CHAIN_OBJ
+    report_prompt = f"""
+    Generate PROFESSIONAL 3D CT radiology report:
+    
+    PATIENT: {patient_info}
+    
+    CLINICAL HISTORY: {findings}
+    
+    REQUIRED DICOM-STANDARD FORMAT:
+    PATIENT: {patient_info}
+    CLINICAL HISTORY: [infer from findings]
+    TECHNIQUE: 3D CT [volumetric details]
+    FINDINGS: [detailed observations]
+    IMPRESSION: [numbered conclusions]
+    
+    Use radiology knowledge base ONLY.
+    """
+    return RAG_CHAIN_OBJ.invoke({"input": report_prompt})["answer"]
+
 
 # Register all tools
-AGENT_TOOLS = [radiology_rag_tool, generate_image, analyze_radiology_image]
+AGENT_TOOLS = [radiology_rag_tool, generate_image, analyze_radiology_image, generate_radiology_report]
 
 
 # ────────────────────────────────────────────────────────────────────────
@@ -412,7 +453,7 @@ if __name__ == '__main__':
     initialize_app_services()
 
     print("\n" + "-"*70)
-    print("Server Ready → http://localhost:5000")
+    print("Server Ready → http://localhost:5000") # http://localhost:5000
     print("Capabilities: RAG (Qwen), Vision (Moondream), Image Gen (SDXL)")
     print("-"*70 + "\n")
 
