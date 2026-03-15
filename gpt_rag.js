@@ -293,6 +293,9 @@ reportButton.addEventListener('click', (e) => {
     e.preventDefault();
     if(!input.value.trim()) return addMessageToChatbox("Enter findings first.", 'bot');
     sendMessage(input.value.trim(), "Please generate a professional radiology report for: ");
+    const patient = prompt("Patient info (e.g., 'John Doe, Male, 45 years old'):");
+    const findings = input.value;
+    sendMessage(`${patient} ${findings}`, "Generate full radiology report for ");
 });
 
 extractButton.addEventListener('click', (e) => {
